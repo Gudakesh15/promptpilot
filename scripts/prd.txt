@@ -1,0 +1,53 @@
+Prompt Pilot
+
+Overview:
+A Chrome extension that adds an "AI Generate" button next to each LinkedIn post in the feed. When clicked, it extracts the content of the post, sends it to a specified API endpoint, and upon receiving a response, copies the result to the clipboard and inserts it into the comment box for that post.
+
+Goals:
+- Add a visible, intuitive "AI Generate" button next to every LinkedIn post in the user's feed.
+- On button click, extract the post content, send it to a backend API, and handle the response.
+- Automatically copy the API response to the clipboard and insert it into the comment box, ready for the user to post.
+- The extension should not disrupt the normal LinkedIn experience.
+
+Functional Requirements:
+1. Inject an "AI Generate" button next to each LinkedIn post in the feed.
+   - The button should match LinkedIn's UI and be clearly labeled.
+   - The button should appear dynamically as new posts load (infinite scroll support).
+2. When the button is clicked, extract the full text content of the corresponding LinkedIn post.
+   - Only the content of the specific post should be captured.
+3. Send a POST request to the API endpoint:
+   - Endpoint: https://aviking15.app.n8n.cloud/webhook-test/bccb1a8d-9b2c-4a48-b093-f99a1e23e889
+   - Payload: { "post": "<extracted post content>" }
+   - Handle API errors gracefully (e.g., show a notification if the request fails).
+4. On successful API response:
+   - Copy the response text to the user's clipboard.
+   - Insert the response text into the comment box of the same LinkedIn post.
+5. Provide visual feedback (e.g., loading spinner, success checkmark, or error message) after the button is clicked.
+   - Notify the user when the response is copied and inserted.
+6. Request only the minimum Chrome extension permissions required (e.g., access to linkedin.com, clipboard).
+   - Do not store or transmit user data except as required for the API call.
+
+Non-Functional Requirements:
+- The extension should not noticeably slow down LinkedIn page loads or scrolling.
+- Must work on the latest version of Chrome and with the current LinkedIn feed layout.
+- Should handle LinkedIn DOM changes gracefully (e.g., via robust selectors or mutation observers).
+- No data should be stored or shared beyond the API call.
+
+Out of Scope:
+- No user authentication or settings panel.
+- No support for LinkedIn mobile app or other browsers.
+- No analytics or tracking.
+
+Example User Flow:
+1. User installs the extension and navigates to LinkedIn.
+2. For each post in the feed, an "AI Generate" button appears.
+3. User clicks the button next to a post.
+4. The extension extracts the post content and sends it to the API.
+5. The extension waits for the API response.
+6. On success, the response is copied to the clipboard and inserted into the comment box for that post.
+7. User can review/edit and post the comment.
+
+Open Questions:
+- Should the extension support LinkedIn articles or only feed posts?
+- Should there be a way to disable/enable the extension on demand?
+- Should the user be able to customize the API endpoint or payload? 
