@@ -4,6 +4,14 @@ A Chrome extension that adds an "AI Generate" button next to each LinkedIn post 
 
 ---
 
+**Project is now scaffolded with:**
+- `manifest.json`
+- `.gitignore`
+- `background.js`
+- `content.js`
+
+---
+
 ## Features
 - Adds an "AI Generate" button next to every LinkedIn post in your feed
 - Extracts the content of the specific post when clicked

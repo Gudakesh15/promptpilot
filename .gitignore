@@ -33,3 +33,6 @@ tasks/
 .cursor/mcp.local.json
 
 # ... existing code ... 
+
+dist/
+build/ 

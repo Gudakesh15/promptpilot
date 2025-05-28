@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt Pilot",
+  "description": "AI-powered LinkedIn comment generator. Adds an 'AI Generate' button to posts, sends content to an API, and inserts the response as a comment.",
+  "version": "0.1.0",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://aviking15.app.n8n.cloud/*",
+    "https://www.linkedin.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_title": "Prompt Pilot"
+  }
+} 
